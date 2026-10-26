@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mokie Mokie</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Import Montserrat Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Styles -->
+  <style>
+    /* Reset margins and set full height */
+    body, html, #app {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden; /* Ensure no scrollbars appear */
+    }
+    
+    /* App Container Styling */
+    #app {
+      color: #ffffff;
+      font-family: 'Montserrat', sans-serif;
+      text-align: center;
+      text-shadow: 0 0 5px #ffffff, 0 0 20px #000, 0 0 30px #000;
+      position: relative; /* Ensure positioning context for children */
+      touch-action: pan-up; /* Enhance touch interactions */
+    }
+    
+    /* Hero Section Styling */
+    #hero {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); /* Center the hero section */
+    }
+    
+    /* Heading Styling */
+    #hero h1 {
+      font-size: 60px;
+      line-height: 80px;
+      margin: 0;
+      text-transform: uppercase;
+    }
+    
+    /* Text Styling (formerly Link Styling) */
+    #hero .developer-text {
+      margin-top: 10px;
+      display: inline-block;
+      color: #fff;
+      font-weight: 700;
+      transition: color 0.3s ease;
+      cursor: default; /* Indicate non-clickable text */
+    }
+    
+    /* Optional: Add a hover effect if desired */
+    #hero .developer-text:hover {
+      color: #ff0; /* Change color on hover for better UX */
+    }
+    
+    /* Canvas Styling for Neon Cursor */
+    #app canvas {
+      display: block;
+      position: fixed;
+      z-index: -1; /* Ensure canvas is behind other elements */
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- App Container -->
+  <div id="app">
+    <div id="hero">
+      <h1>SAYURI<br/>GARCIA/h1>
+      <span class="developer-text">Gwapa ko palag ka?</span>
+    </div>
+  </div>
+  
+  <!-- JavaScript -->
+  <script type="module">
+    // Import the neonCursor function from the CDN
+    import { neonCursor } from 'https://unpkg.com/threejs-toys@0.0.8/build/threejs-toys.module.cdn.min.js';
+    
+    // Initialize the Neon Cursor effect
+    neonCursor({
+      el: document.getElementById('app'),       // The container element
+      shaderPoints: 16,                         // Number of shader points
+      curvePoints: 80,                          // Number of curve points
+      curveLerp: 0.5,                           // Curve interpolation
+      radius1: 5,                               // Inner radius
+      radius2: 30,                              // Outer radius
+      velocityTreshold: 10,                     // Velocity threshold for interactions
+      sleepRadiusX: 100,                        // Sleep radius on X-axis
+      sleepRadiusY: 100,                        // Sleep radius on Y-axis
+      sleepTimeCoefX: 0.0025,                   // Sleep time coefficient on X-axis
+      sleepTimeCoefY: 0.0025                    // Sleep time coefficient on Y-axis
+    });
+  </script>
+  
+</body>
+</html>
